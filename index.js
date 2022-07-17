@@ -19,13 +19,14 @@ function showHelpInfo() {
 -de: recursively decrypt files in the relevant folder
 
 * Args should be used like the examples shown below: 
-* 1. cmd  2. source-path  3. output-dir 4. key  5. iv  6. algo
+* 1. cmd  2. source-path  3. output-path 4. key  5. iv  6. algo
 * The 4th, 5th, 6th arg can be ignored while 1 to 3 shall not.
+* The absolute path is need for 2n and 3rd arg.
 * eg: 
-* cryptee -e ./myFile.mp4 ./output.encrypted [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
-* cryptee -d ./output.encrypted ./myFile.mp4 [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
-* cryptee -re ./output ./myFolder [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
-* cryptee -rd ./output ./myFolder [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
+* cryptee -e D:/myFile.mp4 D:/output.encrypted [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
+* cryptee -d D:/output.encrypted D:/myFile.mp4 [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
+* cryptee -re D:/output D:/myFolder [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
+* cryptee -rd D:/output D:/myFolder [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
 `;
     console.log(infoText);
 }
