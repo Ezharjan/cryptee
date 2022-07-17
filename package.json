@@ -1,0 +1,23 @@
+{
+  "name": "cryptee",
+  "version": "1.0.0",
+  "description": "Encrypt and decrypt file in command line.",
+  "bin": {
+    "cryptee": "index.js"
+  },
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [
+    "AES",
+    "encrypt",
+    "decrypt"
+  ],
+  "author": "Alexander Ezharjan",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^3.2.4",
+    "crypto-js": "^4.1.1",
+    "zlib": "^1.0.5"
+  }
+}
