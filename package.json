@@ -1,7 +1,8 @@
 {
   "name": "cryptee",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This is a simple command-line-based encryption tool developed by Alexander Ezharjan based on crypto-js.",
+  "repository": "https://github.com/Ezharjan/cryptee",
   "bin": {
     "cryptee": "index.js"
   },
@@ -14,7 +15,7 @@
     "decrypt"
   ],
   "author": "Alexander Ezharjan",
-  "e-mail": "mysoft@111.com",
+  "email": "mysoft@111.com",
   "license": "MIT",
   "dependencies": {
     "async": "^3.2.4",

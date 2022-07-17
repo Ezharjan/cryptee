@@ -4,6 +4,7 @@ const fs = require('fs');
 let utils = require('./utils');
 let async = require('async');
 let cryptUtil = new utils.CryptUtil();
+let packageData = require('./package.json')
 
 function showNilResponse() {
     console.log("Sorry, please use -h for help!")
@@ -35,13 +36,12 @@ function InitValues(args) {
     cryptUtil.setIV(args[4]);
     cryptUtil.setAlgo(args[5]);
 }
-
 function RespondToArgs() {
     const args = process.argv.slice(2);
     if (args.length <= 1) {
         switch (args[0]) {
             case '-v':
-                console.log("Current version is 1.0.2, by Alexander Ezharjan(mysoft@111.com).");
+                console.log(`Current version is ${packageData.version}, by Alexander Ezharjan(${packageData.email}).`);
                 break;
             case '-h':
                 showHelpInfo();
@@ -101,7 +101,6 @@ function CreateOutputPath(outputFilePath) {
                 outputDir += outputDirectoryArr[i];
             }
         }
-        outputDir = __dirname + "/" + outputDir
     }
     try {
         if (!fs.existsSync(outputDir)) {
@@ -178,7 +177,8 @@ function zipNdEncryptRecursively(inputFileDir, outputFileDir) {
                 let bf = new Buffer.from(buf);
                 utils.ZipUtil.gZip(bf, function (err, bufData) {
                     let encodeBuffer = cryptUtil.encode(bufData);
-                    let resultPath = __dirname + "/" + outputFileDir + "/" + filename;
+                    let resultPath = outputFileDir + "/" + filename;
+                    console.log("eee" + resultPath)
                     utils.FileUtil.writeFileSync(resultPath, encodeBuffer);
                     callback(err);
                 });
@@ -216,7 +216,7 @@ function decryptNdUnzipRecursively(inputFileDir, outputFileDir) {
                 let decodeBuffer = cryptUtil.decode(bf);
                 utils.ZipUtil.unZip(decodeBuffer, function (err, bufData) {
                     // console.log(JSON.parse(bufData.toString())); //decrypting
-                    let resultPath = __dirname + "/" + outputFileDir + "/" + filename;
+                    let resultPath = outputFileDir + "/" + filename;
                     utils.FileUtil.writeFileSync(resultPath, bufData);
                     callback(err);
                 });
