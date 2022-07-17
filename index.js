@@ -11,20 +11,20 @@ function showNilResponse() {
 function showHelpInfo() {
     let infoText = `
 -v: view the version info
--h: view help info
--e: encrypt
--d: decrypt
--re: recursively encrypt the files in relevant folder
--de: recursively decrypt the files in relevant folder
+-h: view the help info
+-e: encrypt the relevant file
+-d: decrypt the relevant file
+-re: recursively encrypt files in the relevant folder
+-de: recursively decrypt files in the relevant folder
 
 * Args should be used like the examples shown below: 
-* 1. cmd  2. source-path  3. outpur-dir 4. key  5. iv  6. algo
-* 3,4,5 can be ignored while 1,2 shall not.
+* 1. cmd  2. source-path  3. output-dir 4. key  5. iv  6. algo
+* The 4th, 5th, 6th arg can be ignored while 1 to 3 shall not.
 * eg: 
-* cryptor -e ./myFile.mp4 ./output.encrypted [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
-* cryptor -d ./output.encrypted ./myFile.mp4 [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
-* cryptor -re ./output ./myFolder [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
-* cryptor -rd ./output ./myFolder [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
+* cryptee -e ./myFile.mp4 ./output.encrypted [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
+* cryptee -d ./output.encrypted ./myFile.mp4 [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
+* cryptee -re ./output ./myFolder [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
+* cryptee -rd ./output ./myFolder [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
 `;
     console.log(infoText);
 }
@@ -41,7 +41,7 @@ function RespondToArgs() {
     if (args.length <= 1) {
         switch (args[0]) {
             case '-v':
-                console.log("Current cryptor's version is 1.0.0, by Alexander Ezharjan.");
+                console.log("Current version is 1.0.2, by Alexander Ezharjan(mysoft@111.com).");
                 break;
             case '-h':
                 showHelpInfo();
