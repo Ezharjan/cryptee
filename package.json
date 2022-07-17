@@ -1,7 +1,7 @@
 {
   "name": "cryptee",
-  "version": "1.0.0",
-  "description": "Encrypt and decrypt file in command line.",
+  "version": "1.0.1",
+  "description": "This is a simple command-line-based encryptor developed by Alexander Ezharjan through crypto-js.",
   "bin": {
     "cryptee": "index.js"
   },
