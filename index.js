@@ -4,7 +4,7 @@ const fs = require('fs');
 let utils = require('./utils');
 let async = require('async');
 let cryptUtil = new utils.CryptUtil();
-let packageData = require('./package.json')
+let packageData = require('./package.json');
 
 function showNilResponse() {
     console.log("Sorry, please use -h for help!")
@@ -21,7 +21,7 @@ function showHelpInfo() {
 * Args should be used like the examples shown below: 
 * 1. cmd  2. source-path  3. output-path 4. key  5. iv  6. algo
 * The 4th, 5th, 6th arg can be ignored while 1 to 3 shall not.
-* The absolute path is needed for 2n and 3rd arg.
+* The absolute path is needed for 2nd and 3rd arg.
 * eg: 
 * cryptee -e D:/myFile.mp4 D:/output.encrypted [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
 * cryptee -d D:/output.encrypted D:/myFile.mp4 [THIS_IS_THE_KEY] [THIS_IS_THE_IV] [THIS_IS_THE_ALGO]  
