@@ -89,34 +89,8 @@ function RespondToArgs() {
     }
 }
 
-function CreateOutputPath(outputFilePath) {
-    let _outputFilePath = outputFilePath.replace(/\//g, '\\');
-    let outputDirectoryArr = _outputFilePath.split('\\');
-    let outputDir = "";
-    if (outputDirectoryArr.length <= 1) {
-        outputDir = _outputFilePath;
-    } else {
-        for (let i = 0; i < outputDirectoryArr.length - 1; i++) {
-            if (i == 0 && outputDirectoryArr[i] == ".") {
-            } else {
-                outputDir += outputDirectoryArr[i];
-            }
-        }
-    }
-    try {
-        if (!fs.existsSync(outputDir)) {
-            fs.mkdirSync(outputDir);
-            console.log("Directory is created.");
-        } else {
-            console.log("Directory already exists.");
-        }
-    } catch (err) {
-        console.log(err);
-    }
-}
-
 function zipNdEncrypt(inputFilePath, outputFilePath) {
-    CreateOutputPath(outputFilePath);
+    utils.FileUtil.createFolder(outputFilePath, 1);
     utils.FileUtil.getFileContent(inputFilePath, function (err, buf) {
         if (!err) {
             let bf = new Buffer.from(buf);
@@ -137,7 +111,7 @@ function zipNdEncrypt(inputFilePath, outputFilePath) {
 
 
 function decryptNdUnzip(inputFilePath, outputFilePath) {
-    CreateOutputPath(outputFilePath);
+    utils.FileUtil.createFolder(outputFilePath, 1);
     utils.FileUtil.getFileContent(inputFilePath, function (err, buf) {
         if (!err) {
             let bf = new Buffer.from(buf);

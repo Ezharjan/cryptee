@@ -50,6 +50,25 @@ let writeFileAsync = function (filePath, text, cb) {
     });
 };
 
+let createFolder = function (folderPath, tailCursor) {
+    let dirArr = folderPath.toString().split("/");
+    let dynamicPth = "";
+    let bSucceed = false;
+    for (let i = 0; i < dirArr.length; i++) {
+        try {
+            bSucceed = true;
+            if (tailCursor && i >= dirArr.length - tailCursor) {
+                break;
+            }
+            dynamicPth += (i == 0 ? "" : "/") + dirArr[i];
+            (!fs.existsSync(dynamicPth)) && fs.mkdirSync(dynamicPth);
+        } catch (err) {
+            console.log(err);
+            bSucceed = false;
+        }
+    }
+    return bSucceed;
+}
 
 /********************Encrypt/Decrypt**************************/
 
@@ -151,7 +170,8 @@ module.exports = {
         "getFileName": getFileName,
         "writeFileAsync": writeFileAsync,
         "writeFileSync": writeFileSync,
-        "getFileContent": getFileContent
+        "getFileContent": getFileContent,
+        "createFolder": createFolder,
     },
     "CryptUtil": util,
     "ZipUtil": {
